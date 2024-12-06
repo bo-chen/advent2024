@@ -23,7 +23,6 @@ def stoia(pstr):
 def iatos(p):
     return ",".join(map(lambda x: str(x), p))
 
-
 ls = []
 with open(f'{source_dir}/in.txt') as fp:
     for line in fp:
@@ -34,25 +33,25 @@ with open(f'{source_dir}/in.txt') as fp:
 
 spos = []
 sdir = ""
-dirs = {"^": [0,-1], ">": [1,0], "v": [0,1], "<" :[-1,0]}
+dirs = {"^": np.array([0,-1]), ">": np.array([1,0]), "v": np.array([0,1]), "<" : np.array([-1,0])}
 dirorder = {"^": ">", ">": "v", "v": "<", "<" :"^"}
 for j, l in enumerate(ls):
     ls[j] = list(l)
     l = ls[j]
     for i, c in enumerate(l):
         if c in dirs:
-            spos = [i, j]
+            spos = np.array([i, j])
             sdir = c
             ls[j][i] = "P"
 
-fm = copy.deepcopy(ls)
+fm = [r[:] for r in ls]
 def isloop(m, mark = False):
-    pos = [spos[0], spos[1]]
+    pos = np.array([spos[0], spos[1]])
     d = sdir
     been = set()
     while True:
         been.add((pos[0], pos[1], d))
-        npos = [dirs[d][0] + pos[0], dirs[d][1] + pos[1]]
+        npos = dirs[d] + pos
         if npos[0] < 0 or npos[0] >= len(m[0]) or npos[1] < 0 or npos[1] >= len(m):
             return False
         if (npos[0], npos[1], d) in been:

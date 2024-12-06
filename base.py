@@ -17,6 +17,9 @@ def pm(m):
             print(c, end="")
         print("")
 
+def cpm(m):
+    return [r[:] for r in m]
+
 def stoia(pstr):
     return list(map(lambda x: int(x), pstr.split(",")))
 
