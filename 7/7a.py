@@ -20,8 +20,8 @@ def pm(m):
 def cpm(m):
     return [r[:] for r in m]
 
-def stoia(pstr):
-    return list(map(lambda x: int(x), pstr.split(",")))
+def stoia(pstr, delim = ","):
+    return list(map(lambda x: int(x), pstr.strip().split(delim)))
 
 def iatos(p):
     return ",".join(map(lambda x: str(x), p))
@@ -38,14 +38,13 @@ def check(r, vs):
     if len(vs) == 1:
         return vs[0] == r
     
-    return check(r, [int(vs[0]) * int(vs[1])] + vs[2:]) or check(r, [int(vs[0]) + int(vs[1])] + vs[2:])
+    return check(r, [vs[0] * vs[1]] + vs[2:]) or check(r, [vs[0] + vs[1]] + vs[2:])
 
 t = 0
 for l in ls:
     r, vstr = l.split(":")
+    vs = stoia(vstr, " ")
     r = int(r)
-    vs = list(vstr.split(" "))
-    vs.remove("")
     if check(r, vs):
         t += r
 

@@ -20,8 +20,8 @@ def pm(m):
 def cpm(m):
     return [r[:] for r in m]
 
-def stoia(pstr):
-    return list(map(lambda x: int(x), pstr.split(",")))
+def stoia(pstr, delim = ","):
+    return list(map(lambda x: int(x), pstr.strip().split(delim)))
 
 def iatos(p):
     return ",".join(map(lambda x: str(x), p))
