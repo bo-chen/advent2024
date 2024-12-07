@@ -40,9 +40,9 @@ def check(r, vs):
     if vs[0] > r:
         return False
     
-    return check(r, [int(vs[0]) * int(vs[1])] + vs[2:]) or \
-        check(r, [int(vs[0]) + int(vs[1])] + vs[2:]) or \
-        check(r, [int(str(vs[0]) + str(vs[1]))] + vs[2:])
+    return check(r, [vs[0] * int(vs[1])] + vs[2:]) or \
+        check(r, [vs[0] + int(vs[1])] + vs[2:]) or \
+        check(r, [int(str(vs[0]) + vs[1])] + vs[2:])
 
 t = 0
 for l in ls:
