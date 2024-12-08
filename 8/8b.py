@@ -54,8 +54,8 @@ def addnode(a1, a2):
             nodes.add((a1[0], j))
         return
 
-    jdiff = (a2[1] - a1[1])
-    idiff = (a2[0] - a1[0])
+    jdiff = a2[1] - a1[1]
+    idiff = a2[0] - a1[0]
     gcd = math.gcd(jdiff, idiff)
     jdiff = jdiff / gcd
     idiff = idiff / gcd
@@ -67,6 +67,8 @@ def addnode(a1, a2):
         i += idiff
         j += jdiff
 
+    i = a1[0]
+    j = a1[1]
     while i >= 0 and i < w and j >= 0 and j < h:
         nodes.add((i, j))
         i -= idiff
