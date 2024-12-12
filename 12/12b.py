@@ -75,8 +75,6 @@ def measure(i, j):
                 nci = ci
                 while True:
                     nci += dir
-                    if nci < 0 or nci >= w:
-                        break
                     if ((nci, lj), (nci, rj)) in sides:
                         sides.remove(((nci, lj), (nci, rj)))
                     else:
@@ -90,8 +88,6 @@ def measure(i, j):
                 ncj = cj
                 while True:
                     ncj += dir
-                    if ncj < 0 or ncj >= h:
-                        break
                     if ((ui, ncj), (di, ncj)) in sides:
                         sides.remove(((ui, ncj), (di, ncj)))
                     else:
