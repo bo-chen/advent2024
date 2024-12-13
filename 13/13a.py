@@ -45,9 +45,7 @@ while i < len(ls):
     p = (int(m[1]), int(m[2]))
     i += 3
 
-    ex = np.array([[a[0], b[0]],[a[1], b[1]]])
     det = a[0] * b[1] - a[1] * b[0]
-    cs = np.array([p[0], p[1]])
     adet = a[0] * p[1] - a[1] * p[0]
     bdet = p[0] * b[1] - p[1] * b[0]
 
@@ -57,6 +55,5 @@ while i < len(ls):
     butb = adet // det
 
     t += buta * 3 + butb
-
 
 print(t)
